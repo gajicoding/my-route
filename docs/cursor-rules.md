@@ -529,3 +529,48 @@ candidateRoutes: BusRoute[]
 * 테스트 가능성
 
 을 최우선으로 작성한다.
+
+---
+
+# Git Commit Messages
+
+커밋 메시지는 Conventional Commits 제목 + scope별 본문 불릿으로 작성한다.
+
+## 형식
+
+```text
+<type>: <한 줄 요약>
+
+- <scope>: <변경 내용>
+- <scope>: <변경 내용>
+```
+
+## type
+
+`feat` · `fix` · `refactor` · `docs` · `chore` · `test` · `style`
+
+## scope
+
+프로젝트 경로·모듈·훅·문서명을 사용한다.
+
+예: `features/routes`, `services/firebase`, `docs/prd`, `useRouteDetail`
+
+관련 scope가 여러 개면 한 불릿에 쉼표로 나열한다.
+
+## 규칙
+
+* 제목·본문은 한국어 (기술 용어는 영어 허용)
+* 제목은 커밋 전체를 한 줄로 요약
+* 본문은 변경 영역(scope)마다 1불릿, 무엇을 바꿨는지만 기술
+* 한 커밋 = 하나의 논리적 변경
+
+## 예시
+
+```text
+feat: 경로 상세 화면 및 Route Repository read 추가
+
+- features/routes: RouteDetailScreen, useRouteDetail hook 추가
+- features/routes/repository: route.repository.ts 단건·목록 조회 구현
+- services/firebase: Firestore 초기화 및 firestore.ts 연결
+- types/route: Route, RouteStep 타입 정의
+```

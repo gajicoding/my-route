@@ -82,6 +82,13 @@ src/
 
 ---
 
+## Git 커밋
+
+- 형식: `<type>: <한 줄 요약>` + scope별 `- <scope>: <변경>` 본문
+- 상세 규칙: `.cursor/rules/commit-messages.mdc` 및 `docs/cursor-rules.md` Git 섹션
+
+---
+
 ## 코드 생성 워크플로
 
 1. 관련 docs 확인
