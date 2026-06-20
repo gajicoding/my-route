@@ -8,7 +8,7 @@ export interface GeoPoint {
   lng: number;
 }
 
-export interface WalkRouteStep {
+export interface WalkStep {
   id: string;
   type: 'WALK';
   from: GeoPoint;
@@ -24,7 +24,7 @@ export interface BusStepStation {
   lng: number;
 }
 
-export interface BusRouteStep {
+export interface BusStep {
   id: string;
   type: 'BUS';
   fromStation: BusStepStation;
@@ -42,7 +42,7 @@ export interface SubwayStepStation {
   stationName: string;
 }
 
-export interface SubwayRouteStep {
+export interface SubwayStep {
   id: string;
   type: 'SUBWAY';
   line: SubwayLine;
@@ -50,16 +50,16 @@ export interface SubwayRouteStep {
   toStation: SubwayStepStation;
 }
 
-export type RouteStep = WalkRouteStep | BusRouteStep | SubwayRouteStep;
+export type RouteStep = WalkStep | BusStep | SubwayStep;
 
-export function isWalkRouteStep(step: RouteStep): step is WalkRouteStep {
+export function isWalkStep(step: RouteStep): step is WalkStep {
   return step.type === 'WALK';
 }
 
-export function isBusRouteStep(step: RouteStep): step is BusRouteStep {
+export function isBusStep(step: RouteStep): step is BusStep {
   return step.type === 'BUS';
 }
 
-export function isSubwayRouteStep(step: RouteStep): step is SubwayRouteStep {
+export function isSubwayStep(step: RouteStep): step is SubwayStep {
   return step.type === 'SUBWAY';
 }

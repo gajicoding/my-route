@@ -25,6 +25,19 @@ export function useRouteQuery(routeId: string | null) {
   });
 }
 
+export function useRoutesByGroupQuery(groupId: string | null) {
+  return useQuery({
+    queryKey: groupId ? queryKeys.routes.byGroup(groupId) : ['routes', 'empty'],
+    enabled: groupId !== null,
+    queryFn: () => {
+      if (groupId === null) {
+        throw new Error('Route group ID is required');
+      }
+      return routeRepository.getRoutesByGroupId(groupId);
+    },
+  });
+}
+
 export function useCreateRouteMutation() {
   const queryClient = useQueryClient();
 

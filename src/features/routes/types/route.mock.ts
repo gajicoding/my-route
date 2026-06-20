@@ -1,19 +1,14 @@
 import type { FirestoreTimestamp } from './common.types';
 import type { RouteGroup } from './route-group.types';
 import type { Route } from './route.types';
-import type {
-  BusRouteStep,
-  RouteStep,
-  SubwayRouteStep,
-  WalkRouteStep,
-} from './route-step.types';
+import type { BusStep, RouteStep, SubwayStep, WalkStep } from './route-step.types';
 
 const mockTimestamp: FirestoreTimestamp = {
   seconds: 1_704_067_200,
   nanoseconds: 0,
 };
 
-export const mockWalkStepHomeToBusStop: WalkRouteStep = {
+export const mockWalkStepHomeToBusStop: WalkStep = {
   id: 'step_walk_001',
   type: 'WALK',
   from: {
@@ -30,7 +25,7 @@ export const mockWalkStepHomeToBusStop: WalkRouteStep = {
   estimatedMinutes: 3,
 };
 
-export const mockBusStepToGangnam: BusRouteStep = {
+export const mockBusStepToGangnam: BusStep = {
   id: 'step_bus_001',
   type: 'BUS',
   fromStation: {
@@ -52,7 +47,7 @@ export const mockBusStepToGangnam: BusRouteStep = {
   ],
 };
 
-export const mockWalkStepTransfer: WalkRouteStep = {
+export const mockWalkStepTransfer: WalkStep = {
   id: 'step_walk_002',
   type: 'WALK',
   from: {
@@ -69,7 +64,7 @@ export const mockWalkStepTransfer: WalkRouteStep = {
   estimatedMinutes: 4,
 };
 
-export const mockSubwayStepGangnamToSeolleung: SubwayRouteStep = {
+export const mockSubwayStepGangnamToSeolleung: SubwayStep = {
   id: 'step_subway_001',
   type: 'SUBWAY',
   line: {
@@ -86,7 +81,7 @@ export const mockSubwayStepGangnamToSeolleung: SubwayRouteStep = {
   },
 };
 
-export const mockWalkStepToOffice: WalkRouteStep = {
+export const mockWalkStepToOffice: WalkStep = {
   id: 'step_walk_003',
   type: 'WALK',
   from: {

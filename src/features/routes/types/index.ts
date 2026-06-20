@@ -19,18 +19,14 @@ export {
 } from './route.mock';
 export type { CreateRouteInput, Route, UpdateRouteInput } from './route.types';
 export type {
-  BusRouteStep,
+  BusStep,
   BusStepStation,
   GeoPoint,
   RouteStep,
   RouteStepType,
   SubwayLine,
-  SubwayRouteStep,
+  SubwayStep,
   SubwayStepStation,
-  WalkRouteStep,
+  WalkStep,
 } from './route-step.types';
-export {
-  isBusRouteStep,
-  isSubwayRouteStep,
-  isWalkRouteStep,
-} from './route-step.types';
+export { isBusStep, isSubwayStep, isWalkStep } from './route-step.types';
