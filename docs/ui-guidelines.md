@@ -31,13 +31,52 @@
 
 # Design Keywords
 
-* Transit First
-* Information First
-* Fast
-* Clean
-* Reliable
+* Card Layout
+* Route First
+* Clear Hierarchy
+* Timeline
 * Blue Mobility
-* Familiar UX
+* Friendly Utility
+
+---
+
+# Design Principles
+
+## DO
+
+* 흰색 카드 + 연한 배경 (`#F8FAFC`) 레이어
+* 예상 도착·버스 도착 시간 크게 표시
+* 환승 상태는 연한 색 Status Pill
+* 가로/세로 타임라인으로 경로 구조 표현
+* 그룹 아코디언으로 경로 관리
+
+## DO NOT
+
+* 과도한 장식·그라디언트
+* 보라색 계열
+* 정보 없는 큰 여백
+
+---
+
+# Information Priority
+
+모든 화면은 아래 순서를 따른다.
+
+```text
+버스 도착 시간
+
+↓
+
+예상 도착 시간
+
+↓
+
+환승 상태
+
+↓
+
+경로 세부 정보
+```
 
 ---
 
@@ -131,15 +170,25 @@ UI 흐름은 참고하되
 
 ---
 
-## Disabled
+## Surface Muted
+
+화면 배경 (홈 등)
 
 ```css
-#CBD5E1
+#F1F5F9
 ```
 
 ---
 
-# Status Colors
+## Transit Accent
+
+버스 번호 강조
+
+```css
+#2563EB
+```
+
+---
 
 ## SAFE
 
@@ -340,7 +389,57 @@ shadowOffset: {
 
 # Component Guidelines
 
-# Route Card
+# List Section
+
+목적
+
+리스트 그룹 제목 (회색 바)
+
+```ts
+paddingVertical: 8
+paddingHorizontal: 16
+background: #F1F5F9
+fontSize: 13
+```
+
+---
+
+# List Row
+
+목적
+
+정보 밀도 높은 단일 행
+
+```ts
+paddingVertical: 10
+paddingHorizontal: 16
+minHeight: 44
+borderBottom: hairline
+```
+
+---
+
+# Route Summary Row
+
+목적
+
+추천 경로 요약 — 예상 도착 우측 정렬, 환승 상태 인라인
+
+---
+
+# Bus Arrival Row
+
+목적
+
+버스 도착 정보 — 3열: 번호 | 정류장·위치 | 도착(크게)
+
+```ts
+busNumber: 20 bold #2563EB
+arrival: 26 bold
+meta: 12 secondary
+```
+
+---
 
 목적
 
@@ -520,19 +619,71 @@ Primary
 구조
 
 ```text
+헤더 (앱명 + 알림)
+
+↓
+
 인사
 
 ↓
 
-추천 경로
+현재 경로 카드 (도착·환승·미니 타임라인·안내 시작)
 
 ↓
 
-최근 사용 경로
+추천 경로 (탭 + 카드 리스트)
+```
+
+---
+
+# Routes Screen
+
+구조
+
+```text
+헤더 (내 경로)
 
 ↓
 
-실시간 버스 정보
+그룹 아코디언 (출근 / 운동 / 기타)
+
+  └ 경로 행 (기본 뱃지 · 도착 · 환승 상태)
+```
+
+---
+
+# Route Detail Screen
+
+구조
+
+```text
+헤더 (경로명 + 편집)
+
+↓
+
+도착·환승·통계 요약
+
+↓
+
+세로 타임라인 (버스 / 도보 / 지하철)
+
+↓
+
+하단 고정 [안내 시작]
+```
+
+---
+
+# Navigation Screen
+
+구조
+
+```text
+현재 단계 카드 (도착 시간 크게)
+
+↓
+
+다음 단계 타임라인
 ```
 
 ---

@@ -1,0 +1,47 @@
+---
+description: Expo SDK 56 네비게이션 — expo-router Stack 사용, @react-navigation/native-stack 금지
+alwaysApply: true
+---
+
+# Navigation (Expo SDK 56)
+
+Expo SDK 56 + expo-router 프로젝트에서는 **Stack 네비게이션을 `expo-router`로만** 구성한다.
+
+## 필수
+
+- Stack 레이아웃: `import { Stack } from 'expo-router'`
+- 화면 정의: `src/app/` 파일 기반 라우팅 + `_layout.tsx`의 `<Stack>` / `<Stack.Screen>`
+- 탭: `expo-router/js-tabs` 또는 `expo-router/unstable-native-tabs` (기존 패턴 유지)
+- 네비게이션 타입: `expo-router` re-export 타입 사용 (`NativeStackNavigationProp`, `StackScreenProps` 등)
+
+## 금지
+
+- `@react-navigation/native-stack` 패키지 설치·import
+- `createNativeStackNavigator` 직접 사용
+- React Navigation imperative Stack을 루트 네비게이션으로 새로 추가
+
+## 예시
+
+```tsx
+// ✅ src/app/_layout.tsx
+import { Stack } from 'expo-router';
+
+export default function RootLayout() {
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="(tabs)" />
+      <Stack.Screen name="routes/[id]" options={{ title: '경로 상세' }} />
+    </Stack>
+  );
+}
+```
+
+```tsx
+// ❌ 금지
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+```
+
+## 참고
+
+- Expo v56 문서: https://docs.expo.dev/versions/v56.0.0/
+- expo-router Stack: https://docs.expo.dev/router/advanced/stack/

@@ -505,11 +505,40 @@ candidateRoutes: BusRoute[]
 
 ---
 
+# Navigation Rules (Expo SDK 56)
+
+Expo SDK 56에서는 Stack 네비게이션을 **expo-router**로 구성한다.
+
+## 필수
+
+* `import { Stack } from 'expo-router'` — `_layout.tsx`에서 Stack 레이아웃 정의
+* `src/app/` 파일 기반 라우팅
+* 탭: `expo-router/js-tabs` 또는 `expo-router/unstable-native-tabs`
+* 네비게이션 타입: `expo-router` re-export 타입
+
+## 금지
+
+* `@react-navigation/native-stack` 패키지 설치·import
+* `createNativeStackNavigator` 직접 사용
+
+```tsx
+// ✅
+import { Stack } from 'expo-router';
+
+// ❌
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+```
+
+상세: `.cursor/rules/expo-router-navigation.mdc`
+
+---
+
 # Forbidden
 
 절대 사용 금지
 
 * any
+* `@react-navigation/native-stack`
 * Class Component
 * Redux
 * Direct Firestore Access

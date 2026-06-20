@@ -1,0 +1,1 @@
+export { useBusArrivalQuery } from './useBusArrivalQuery';

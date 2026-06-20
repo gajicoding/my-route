@@ -36,6 +36,7 @@ alwaysApply: true
 - 하드코딩 금지, 중복 최소화, 재사용 컴포넌트 우선
 - 함수는 단일 책임 원칙
 - Expo v56 문서 준수: https://docs.expo.dev/versions/v56.0.0/
+- **네비게이션**: `@react-navigation/native-stack` 금지 → `expo-router`의 `Stack` 사용 (`.cursor/rules/expo-router-navigation.mdc`)
 
 ---
 
