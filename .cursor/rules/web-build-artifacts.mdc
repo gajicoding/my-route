@@ -1,0 +1,32 @@
+---
+description: 웹 export 테스트 산출물 gitignore·자동 정리 규칙
+alwaysApply: true
+---
+
+# Web Build Artifacts
+
+웹 export·빌드 테스트로 생기는 디렉터리는 **커밋하지 않는다**. `.gitignore`에 포함되어 있다.
+
+## 대상
+
+* `web-build/` — Expo 기본 web export 출력
+* `.expo-web-*/` — 로컬 web export 테스트 출력 (예: `.expo-web-test`)
+* `.expo/test-export/` — Expo 내부 export 테스트 출력
+
+## 필수
+
+* web export **검증·테스트** 시 `npm run export:web:test` 사용 — 종료 시(성공·실패 모두) 자동 정리
+* 수동으로 `expo export -p web` 실행한 뒤에는 `npm run clean:web-build` 실행
+* AI·에이전트가 web export 테스트를 수행한 경우, 작업 마무리 전 산출물이 남지 않았는지 확인
+
+## 금지
+
+* web 빌드 산출물을 git add·commit
+* `--output-dir`로 `.expo-web-*` 외 경로에 테스트 export 후 방치
+
+## 스크립트
+
+| 명령 | 용도 |
+|---|---|
+| `npm run export:web:test` | web export 테스트 후 자동 삭제 |
+| `npm run clean:web-build` | 산출물 수동 정리 |

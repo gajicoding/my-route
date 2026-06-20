@@ -43,6 +43,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
+    "export:web:test": "node ./scripts/export-web-test.js",
+    "clean:web-build": "node ./scripts/clean-web-build-artifacts.js",
     "lint": "expo lint"
   },
   "private": true

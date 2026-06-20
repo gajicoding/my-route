@@ -37,6 +37,7 @@ alwaysApply: true
 - 함수는 단일 책임 원칙
 - Expo v56 문서 준수: https://docs.expo.dev/versions/v56.0.0/
 - **네비게이션**: `@react-navigation/native-stack` 금지 → `expo-router`의 `Stack` 사용 (`.cursor/rules/expo-router-navigation.mdc`)
+- **웹 빌드 산출물**: `web-build/`, `.expo-web-*/` 커밋 금지 — web export 테스트는 `npm run export:web:test`, 수동 정리는 `npm run clean:web-build` (`.cursor/rules/web-build-artifacts.mdc`)
 
 ---
 

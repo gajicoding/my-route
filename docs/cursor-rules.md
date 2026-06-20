@@ -533,6 +533,26 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 ---
 
+# Web Build Artifacts
+
+웹 export·빌드 테스트 산출물은 gitignore 대상이며 **커밋하지 않는다**.
+
+## 대상
+
+* `web-build/`
+* `.expo-web-*/`
+* `.expo/test-export/`
+
+## 필수
+
+* web export 검증: `npm run export:web:test` (종료 시 자동 정리)
+* 수동 export 후: `npm run clean:web-build`
+* AI·에이전트 web export 테스트 후 산출물 방치 금지
+
+상세: `.cursor/rules/web-build-artifacts.mdc`
+
+---
+
 # Forbidden
 
 절대 사용 금지
