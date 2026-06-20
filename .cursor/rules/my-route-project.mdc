@@ -1,0 +1,99 @@
+---
+description: 나만의 경로 앱 — 프로젝트 개요, 필수 문서, 개발·UI·Firestore·API 규칙
+alwaysApply: true
+---
+
+# 나만의 경로 앱 — Project Rules
+
+사용자가 장소, 경로, 여행·산책 코스를 기록·공유하는 모바일 앱. 모든 구현 시 아래 문서를 우선 참조한다.
+
+## 필수 참조 문서
+
+1. `docs/prd.md` — 제품 요구사항
+2. `docs/firestore-schema.md` — Firestore 스키마
+3. `docs/ui-guidelines.md` — UI/디자인 시스템
+4. `docs/api-spec.md` — API 규격
+5. `docs/cursor-rules.md` — 코딩·아키텍처 규칙
+
+보조: `docs/architecture.md` (기술 스택, Zustand, TanStack Query 등)
+
+**문서와 코드가 충돌하면 문서를 우선한다.**
+
+---
+
+## 문서 우선 개발
+
+- 새 기능 전 관련 docs 확인
+- 문서에 없는 데이터 구조 임의 생성 금지
+- Firestore 컬렉션·필드·타입은 `firestore-schema.md` 준수
+- 새 컬렉션 필요 시 **코드 작성 전** 스키마 문서 업데이트 제안
+
+---
+
+## 코드 품질
+
+- TypeScript Strict Mode, `any` 금지
+- 하드코딩 금지, 중복 최소화, 재사용 컴포넌트 우선
+- 함수는 단일 책임 원칙
+- Expo v56 문서 준수: https://docs.expo.dev/versions/v56.0.0/
+
+---
+
+## 폴더 구조
+
+기존 구조 유지. 새 기능은 적절한 위치에 배치:
+
+```
+src/
+├── app/
+├── components/
+├── features/
+├── services/
+├── hooks/
+├── types/
+├── utils/
+└── constants/
+```
+
+---
+
+## Firestore
+
+- 스키마·필드명 임의 변경 금지
+- 모든 Firestore 데이터에 TypeScript 타입 정의 (User, Route, Place, Review, Bookmark 등)
+- Screen/Component에서 Firestore 직접 호출 금지 → Repository 패턴 (`docs/cursor-rules.md`)
+
+---
+
+## UI
+
+- `docs/ui-guidelines.md` 준수
+- Primary: `#2563EB`, `#1D4ED8`, `#3B82F6`
+- 금지: 보라색, 무분별한 그라디언트, Material 기본 스타일 남용
+- 모바일 퍼스트 — 우선순위: 콘텐츠 → 탐색 → 액션 버튼
+- 공통 컴포넌트 재사용 (Button, Input, Card, RouteCard, PlaceCard, BottomSheet)
+
+---
+
+## 상태 관리 · API
+
+- 기존 패턴 유지 (Zustand, TanStack Query). 새 라이브러리 임의 도입 금지
+- API는 `docs/api-spec.md` 준수 — 응답 타입, 에러·Loading 처리 필수
+
+---
+
+## 코드 생성 워크플로
+
+1. 관련 docs 확인
+2. 기존 구현·재사용 코드 탐색
+3. 타입 정의 확인
+4. 구현
+
+## AI 응답 (기능 구현 요청 시)
+
+1. 구현 계획 설명
+2. 수정 파일 목록 제시
+3. 코드 작성
+4. 필요한 문서 수정 여부 안내
+
+문서 없는 기능은 임의 구현하지 말고 먼저 제안한다.
