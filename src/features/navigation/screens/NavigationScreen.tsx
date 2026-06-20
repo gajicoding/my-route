@@ -1,6 +1,8 @@
-import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { goBackOrReplace } from '@/navigation/go-back-or-replace';
+import { routesTabHref } from '@/navigation/paths';
 import { Card } from '@/shared/components/Card';
 import { RouteTimeline } from '@/shared/components/RouteTimeline';
 import { ScreenHeader } from '@/shared/components/ScreenHeader';
@@ -13,7 +15,6 @@ import { colors, spacing, typography } from '@/shared/theme';
 import { navigationMock } from './navigation.mock';
 
 export function NavigationScreen() {
-  const router = useRouter();
   useLocalSearchParams<NavigationParams>();
   const { currentStep, nextSteps } = navigationMock;
 
@@ -21,7 +22,7 @@ export function NavigationScreen() {
     <ScreenLayout>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <ScreenHeader
-          onBackPress={() => router.back()}
+          onBackPress={() => goBackOrReplace(routesTabHref())}
           showRight={false}
           title="안내 중"
         />

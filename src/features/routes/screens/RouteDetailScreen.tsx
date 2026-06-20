@@ -1,7 +1,8 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { navigationHref } from '@/navigation/paths';
+import { goBackOrReplace } from '@/navigation/go-back-or-replace';
+import { navigationHref, routesTabHref } from '@/navigation/paths';
 import { Button } from '@/shared/components/Button';
 import { RouteTimeline } from '@/shared/components/RouteTimeline';
 import { ScreenHeader } from '@/shared/components/ScreenHeader';
@@ -32,7 +33,7 @@ export function RouteDetailScreen() {
     >
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <ScreenHeader
-          onBackPress={() => router.back()}
+          onBackPress={() => goBackOrReplace(routesTabHref())}
           onRightPress={() => undefined}
           rightIcon="create-outline"
           title={routeDetailMock.name}

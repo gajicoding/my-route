@@ -1,5 +1,6 @@
 export * from './screens';
-export { navigationHref, routeDetailHref } from './paths';
+export { goBackOrReplace } from './go-back-or-replace';
+export { navigationHref, routeCreateHref, routeDetailHref, routesTabHref } from './paths';
 export {
   bottomTabs,
   type BottomTabConfig,

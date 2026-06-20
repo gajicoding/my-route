@@ -1,7 +1,9 @@
 import * as SplashScreen from 'expo-splash-screen';
 import { useRouter } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import * as SystemUI from 'expo-system-ui';
 import { useCallback, useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 
 import { AppLogoMark } from '@/features/auth/components';
@@ -26,6 +28,14 @@ export function SplashScreenView() {
 
     router.replace('/login');
   }, [isAuthenticated, router]);
+
+  useEffect(() => {
+    if (Platform.OS !== 'android') {
+      return;
+    }
+
+    void SystemUI.setBackgroundColorAsync(colors.primary);
+  }, []);
 
   useEffect(() => {
     let mounted = true;
@@ -56,6 +66,7 @@ export function SplashScreenView() {
 
   return (
     <Animated.View entering={FadeIn.duration(300)} exiting={FadeOut.duration(250)} style={styles.container}>
+      <StatusBar style="light" />
       <View style={styles.content}>
         <AppLogoMark size="lg" />
         <Text style={styles.title}>나만의 경로</Text>

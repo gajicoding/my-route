@@ -1,5 +1,13 @@
 import type { Href } from 'expo-router';
 
+export function routesTabHref(): Href {
+  return '/(tabs)/routes';
+}
+
+export function routeCreateHref(): Href {
+  return '/routes/create';
+}
+
 export function routeDetailHref(routeId: string): Href {
   return {
     pathname: '/routes/[routeId]',

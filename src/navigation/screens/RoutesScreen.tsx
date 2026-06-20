@@ -1,7 +1,10 @@
 import { useRouter } from 'expo-router';
+import { useMemo, useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 
-import { routeDetailHref } from '@/navigation/paths';
+import { RouteGroupCreateModal } from '@/features/route-groups/components/RouteGroupCreateModal';
+import { routeCreateHref, routeDetailHref } from '@/navigation/paths';
+import { ExpandableFab } from '@/shared/components/ExpandableFab';
 import { RouteGroupAccordion } from '@/shared/components/RouteGroupAccordion';
 import { ScreenHeader } from '@/shared/components/ScreenHeader';
 import { ScreenLayout } from '@/shared/components/ScreenLayout';
@@ -10,8 +13,29 @@ import { spacing } from '@/shared/theme';
 
 import { routesMock } from './routes.mock';
 
+const FAB_EXPANDED_EXTRA_HEIGHT = 120;
+
 export function RoutesScreen() {
   const router = useRouter();
+  const [isGroupModalVisible, setIsGroupModalVisible] = useState(false);
+
+  const fabActions = useMemo(
+    () => [
+      {
+        id: 'create-group',
+        label: '그룹 만들기',
+        icon: 'folder-outline' as const,
+        onPress: () => setIsGroupModalVisible(true),
+      },
+      {
+        id: 'create-route',
+        label: '경로 만들기',
+        icon: 'map-outline' as const,
+        onPress: () => router.push(routeCreateHref()),
+      },
+    ],
+    [router],
+  );
 
   return (
     <ScreenLayout>
@@ -31,6 +55,13 @@ export function RoutesScreen() {
           />
         ))}
       </ScrollView>
+
+      <ExpandableFab actions={fabActions} hidden={isGroupModalVisible} />
+
+      <RouteGroupCreateModal
+        onClose={() => setIsGroupModalVisible(false)}
+        visible={isGroupModalVisible}
+      />
     </ScreenLayout>
   );
 }
@@ -38,7 +69,7 @@ export function RoutesScreen() {
 const styles = StyleSheet.create({
   content: {
     gap: spacing.md,
-    paddingBottom: spacing['2xl'],
+    paddingBottom: spacing['2xl'] + layout.fabSize + FAB_EXPANDED_EXTRA_HEIGHT,
     paddingHorizontal: layout.screenPaddingHorizontal,
     paddingTop: spacing.sm,
   },

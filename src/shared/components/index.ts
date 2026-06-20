@@ -3,6 +3,8 @@ export { BusArrivalCard, type BusArrivalCardProps } from './BusArrivalCard';
 export { Card, type CardProps } from './Card';
 export { CurrentRouteCard, type CurrentRouteCardProps } from './CurrentRouteCard';
 export { EmptyState, type EmptyStateProps } from './EmptyState';
+export { ExpandableFab, type ExpandableFabAction, type ExpandableFabProps } from './ExpandableFab';
+export { Input, type InputProps } from './Input';
 export { ListDivider } from './ListDivider';
 export { ListRow, type ListRowProps } from './ListRow';
 export { ListSection, type ListSectionProps } from './ListSection';
